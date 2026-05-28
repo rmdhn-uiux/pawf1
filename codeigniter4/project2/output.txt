@@ -1,0 +1,6 @@
+
+CodeIgniter v4.7.2 Command Line Tool - Server Time: 2026-04-02 17:55:30 UTC+00:00
+
+CodeIgniter development server started on http://localhost:8080
+Press Control-C to stop.
+[Fri Apr  3 00:55:30 2026] PHP 8.3.6 Development Server (http://localhost:8080) started

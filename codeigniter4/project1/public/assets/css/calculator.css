@@ -1,0 +1,101 @@
+/**
+ * Pengaturan dasar halaman (Body).
+ * Mengatur agar konten berada di tengah secara vertikal dan horizontal.
+ */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f7f6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/**
+ * Kontainer utama kalkulator.
+ */
+.calculator {
+    background-color: #333;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    width: 320px;
+}
+
+/**
+ * Pengaturan input tampilan (Display).
+ */
+#display {
+    width: 100%;
+    height: 60px;
+    padding: 10px;
+    font-size: 32px;
+    text-align: right;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #222;
+    color: #00ff00; /* Warna retro hijau untuk teks */
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/**
+ * Grid layout untuk tombol-tombol.
+ */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+/**
+ * Desain umum tombol kalkulator.
+ */
+button {
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    background-color: #444;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/**
+ * Efek hover dan active pada tombol.
+ */
+button:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/**
+ * Tombol khusus: Operator & Equal.
+ */
+button:nth-child(-n+4) {
+    background-color: #ff9500; /* Warna orange untuk operator baris atas */
+}
+
+button:nth-child(4n) {
+    background-color: #ff9500; /* Warna orange untuk kolom operator di kanan */
+}
+
+.btn-equal {
+    background-color: #28a745 !important;
+    grid-column: span 2; /* Menempati 2 kolom untuk tombol sama dengan */
+}
+
+/**
+ * Tombol Clear (C) dan Delete (DEL) lebih mencolok.
+ */
+button:nth-child(1), button:nth-child(2) {
+    background-color: #d9534f;
+}
