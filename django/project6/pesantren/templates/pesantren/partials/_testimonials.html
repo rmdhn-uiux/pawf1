@@ -1,0 +1,34 @@
+<section class="section section-bg-alt" id="testimoni">
+    <div class="container max-w-[1200px] mx-auto px-6">
+        <div class="section-header" data-aos="fade-up" data-aos-duration="800">
+            <span class="tagline">Testimoni</span>
+            <h2>Apa Kata Mereka Tentang Al Mustaqim?</h2>
+            <p>Kisah sukses, pendapat, dan ungkapan tulus dari wali santri, alumni, serta tokoh pendidikan.</p>
+        </div>
+
+        <div class="testimonials-grid">
+            {% for t in testimonials %}
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:'100' }}">
+                <p class="testimonial-text">"{{ t.pesan }}"</p>
+                <div class="testimonial-user">
+                    {% if t.foto_url %}
+                        <img src="{{ t.foto_url }}" alt="{{ t.nama }}" class="testimonial-avatar">
+                    {% else %}
+                        <div class="testimonial-avatar flex items-center justify-center text-primary bg-primary/10 font-bold">
+                            {{ t.nama|slice:":1" }}
+                        </div>
+                    {% endif %}
+                    <div class="testimonial-info">
+                        <h4>{{ t.nama }}</h4>
+                        <span>{{ t.role }}</span>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="text-center col-span-full py-10">
+                <p>Belum ada testimoni.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

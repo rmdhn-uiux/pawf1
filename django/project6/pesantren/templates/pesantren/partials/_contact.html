@@ -1,0 +1,145 @@
+<section class="section" id="daftar">
+    <div class="container max-w-[1200px] mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-[60px] items-start">
+            <!-- Registration Form -->
+            <div class="form-wrapper" id="pendaftaran-box" data-aos="fade-right" data-aos-duration="800">
+                <h3>Formulir Pendaftaran</h3>
+                <p class="form-intro">Lengkapi data calon santri di bawah ini untuk memulai proses pendaftaran online. Tim kami akan menghubungi Anda segera.</p>
+
+                <form action="{% url 'daftar_santri' %}" method="POST" autocomplete="off">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <label for="{{ registration_form.nama_lengkap.id_for_label }}">Nama Lengkap Santri</label>
+                        {{ registration_form.nama_lengkap }}
+                        {{ registration_form.nama_lengkap.errors }}
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label for="{{ registration_form.tempat_lahir.id_for_label }}">Tempat Lahir</label>
+                            {{ registration_form.tempat_lahir }}
+                            {{ registration_form.tempat_lahir.errors }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ registration_form.tanggal_lahir.id_for_label }}">Tanggal Lahir</label>
+                            {{ registration_form.tanggal_lahir }}
+                            {{ registration_form.tanggal_lahir.errors }}
+                        </div>
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label for="{{ registration_form.jenis_kelamin.id_for_label }}">Jenis Kelamin</label>
+                            {{ registration_form.jenis_kelamin }}
+                            {{ registration_form.jenis_kelamin.errors }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ registration_form.program_pilihan.id_for_label }}">Program Pilihan</label>
+                            {{ registration_form.program_pilihan }}
+                            {{ registration_form.program_pilihan.errors }}
+                        </div>
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label for="{{ registration_form.nama_orang_tua.id_for_label }}">Nama Orang Tua / Wali</label>
+                            {{ registration_form.nama_orang_tua }}
+                            {{ registration_form.nama_orang_tua.errors }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ registration_form.nomor_hp.id_for_label }}">Nomor WhatsApp</label>
+                            {{ registration_form.nomor_hp }}
+                            {{ registration_form.nomor_hp.errors }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ registration_form.alamat.id_for_label }}">Alamat Lengkap</label>
+                        {{ registration_form.alamat }}
+                        {{ registration_form.alamat.errors }}
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-form">
+                        Kirim Formulir Pendaftaran
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Contact Info & Message Form -->
+            <div class="info-sidebar" id="kontak">
+                <div class="info-card info-card-dark" data-aos="fade-left" data-aos-delay="100" data-aos-duration="800">
+                    <h3>Hubungi Kami</h3>
+                    <p class="mb-6">Silakan ajukan pertanyaan atau kunjungi komplek pondok pesantren kami pada jam kerja.</p>
+
+                    <ul class="info-list">
+                        <li class="info-item">
+                            <div class="info-icon">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>Alamat Pesantren</h4>
+                                <p>Jl. Gapura Menteng No.22, Jurang Mangu Barat, Kec. Pd. Aren, Kota Tangerang Selatan, Banten 15412</p>
+                            </div>
+                        </li>
+                        <li class="info-item">
+                            <div class="info-icon">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>WhatsApp & Telp</h4>
+                                <p>+62 856-7778-393 (Adm. Pendaftaran)</p>
+                            </div>
+                        </li>
+                        <li class="info-item">
+                            <div class="info-icon">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>Email Resmi</h4>
+                                <p>almustaqim.id@gmail.com</p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="map-placeholder">
+                        <div class="map-graphic"></div>
+                        <a href="https://maps.app.goo.gl/tJoSkKL3UY8gSZpQA?g_st=aw" target="_blank" class="btn btn-secondary map-marker-btn">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                            Buka Google Maps
+                        </a>
+                    </div>
+                </div>
+
+                <div class="info-card" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+                    <h3>Kirim Pertanyaan</h3>
+                    <form action="{% url 'kirim_pesan' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="{{ contact_form.nama.id_for_label }}">Nama</label>
+                            {{ contact_form.nama }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ contact_form.email.id_for_label }}">Email</label>
+                            {{ contact_form.email }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ contact_form.telepon.id_for_label }}">WhatsApp</label>
+                            {{ contact_form.telepon }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ contact_form.subjek.id_for_label }}">Subjek</label>
+                            {{ contact_form.subjek }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ contact_form.pesan.id_for_label }}">Pesan</label>
+                            {{ contact_form.pesan }}
+                        </div>
+                        <button type="submit" class="btn btn-outline btn-form">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

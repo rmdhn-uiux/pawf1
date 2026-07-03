@@ -1,0 +1,25 @@
+<section class="section section-bg-alt" id="program">
+    <div class="container max-w-[1200px] mx-auto px-6">
+        <div class="section-header" data-aos="fade-up" data-aos-duration="800">
+            <span class="tagline">Program Unggulan</span>
+            <h2>Pilihan Kurikulum Terbaik untuk Masa Depan</h2>
+            <p>Kami merancang program pendidikan komprehensif guna mencetak profil lulusan yang unggul secara intelektual dan spiritual.</p>
+        </div>
+
+        <div class="programs-grid">
+            {% for program in programs %}
+            <div class="program-card" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:'100' }}">
+                <div class="program-icon-box">
+                    <i class="fa-solid {{ program.icon }}"></i>
+                </div>
+                <h3>{{ program.nama }}</h3>
+                <p>{{ program.deskripsi }}</p>
+            </div>
+            {% empty %}
+            <div class="text-center col-span-full py-10">
+                <p>Program pendidikan belum ditambahkan.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

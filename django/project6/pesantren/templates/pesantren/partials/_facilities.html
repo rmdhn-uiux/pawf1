@@ -1,0 +1,27 @@
+<section class="section" id="fasilitas">
+    <div class="container max-w-[1200px] mx-auto px-6">
+        <div class="section-header" data-aos="fade-up" data-aos-duration="800">
+            <span class="tagline">Fasilitas Pesantren</span>
+            <h2>Lingkungan Belajar yang Nyaman dan Modern</h2>
+            <p>Fasilitas lengkap disediakan untuk mendukung aktivitas belajar-mengajar, ibadah, olahraga, dan keseharian santri.</p>
+        </div>
+
+        <div class="facilities-grid">
+            {% for facility in facilities %}
+            <div class="facility-card" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:'100' }}">
+                <div class="facility-icon-header">
+                    <i class="fa-solid {{ facility.icon }}"></i>
+                </div>
+                <div class="facility-card-body">
+                    <h3>{{ facility.nama }}</h3>
+                    <p>{{ facility.deskripsi }}</p>
+                </div>
+            </div>
+            {% empty %}
+            <div class="text-center col-span-full py-10">
+                <p>Fasilitas belum ditambahkan.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

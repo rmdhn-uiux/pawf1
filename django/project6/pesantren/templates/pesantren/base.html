@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Pondok Pesantren Al Mustaqim{% endblock %}</title>
+    <meta name="description" content="{% block description %}Pondok Pesantren Al Mustaqim - Menyeimbangkan Keimanan, Akhlakul Karimah, dan Keahlian Teknologi untuk Masa Depan Gemilang.{% endblock %}">
+    <link rel="icon" type="image/jpeg" href="{% static 'pesantren/images/logo.jpg' %}">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#174f38',
+                            light: '#2a7a5a',
+                            dark: '#0d2e21',
+                        },
+                        secondary: {
+                            DEFAULT: '#dda12e',
+                            light: '#e6b84d',
+                            dark: '#b8831f',
+                        },
+                        accent: '#3eae8a',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        amiri: ['Amiri', 'serif'],
+                    },
+                    borderRadius: {
+                        xl: '20px',
+                        lg: '12px',
+                        md: '8px',
+                    },
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'pesantren/css/style.css' %}">
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-[#f9f7f2] text-[#231f1a] font-sans leading-relaxed overflow-x-hidden">
+
+    {% include 'pesantren/partials/_navbar.html' %}
+    {% include 'pesantren/partials/_messages.html' %}
+
+    {% block content %}{% endblock %}
+
+    {% include 'pesantren/partials/_footer.html' %}
+    {% include 'pesantren/partials/_backtotop.html' %}
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="{% static 'pesantren/js/main.js' %}"></script>
+</body>
+</html>

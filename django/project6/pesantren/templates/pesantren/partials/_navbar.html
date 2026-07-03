@@ -1,0 +1,52 @@
+{% load static %}
+<header class="header fixed top-0 left-0 w-full z-[1000] bg-white/90 backdrop-blur-md border-b border-[#dce8e0] transition-all duration-500" id="navbar">
+    <div class="container max-w-[1200px] mx-auto px-6">
+        <div class="flex justify-between items-center py-[18px] transition-all duration-500" id="nav-wrapper">
+            <a href="#hero" class="flex items-center gap-3 no-underline">
+                <img src="{% static 'pesantren/images/logo.jpg' %}" alt="Pondok Pesantren Al Mustaqim" class="w-[42px] h-[42px] rounded-full object-cover shadow-sm">
+                <div>
+                    <h1 class="font-serif font-bold text-[1.35rem] leading-tight text-primary-dark transition-colors duration-500">Pondok Pesantren <span class="font-sans text-[0.75rem] font-medium tracking-[0.1em] uppercase text-[#6b7d72] block transition-colors duration-500">Al Mustaqim</span></h1>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <ul class="hidden lg:flex items-center gap-8 list-none" id="nav-menu">
+                <li><a href="#hero" class="nav-link">Beranda</a></li>
+                <li><a href="#tentang" class="nav-link">Tentang Kami</a></li>
+                <li><a href="#program" class="nav-link">Program</a></li>
+                <li><a href="#fasilitas" class="nav-link">Fasilitas</a></li>
+                <li><a href="#testimoni" class="nav-link">Testimoni</a></li>
+                <li><a href="#kontak" class="nav-link">Hubungi Kami</a></li>
+                <li><a href="#daftar" class="btn btn-secondary btn-nav">Daftar Sekarang</a></li>
+            </ul>
+
+            <!-- Mobile Toggle -->
+            <button class="lg:hidden bg-none border-0 text-primary-dark text-2xl cursor-pointer z-[1001]" id="mobile-toggle" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars" id="hamburger-icon"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Overlay -->
+    <div class="fixed inset-0 z-50 hidden" id="mobile-overlay">
+        <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" id="overlay-bg"></div>
+        <div class="absolute top-0 right-0 h-full w-full max-w-sm bg-primary shadow-2xl transform translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" id="mobile-drawer">
+            <div class="flex justify-end p-6">
+                <button class="text-white text-3xl bg-none border-0 cursor-pointer" id="close-mobile" aria-label="Close menu">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <nav class="px-8">
+                <ul class="flex flex-col gap-2 list-none">
+                    <li><a href="#hero" class="mobile-nav-link" data-close>Beranda</a></li>
+                    <li><a href="#tentang" class="mobile-nav-link" data-close>Tentang Kami</a></li>
+                    <li><a href="#program" class="mobile-nav-link" data-close>Program</a></li>
+                    <li><a href="#fasilitas" class="mobile-nav-link" data-close>Fasilitas</a></li>
+                    <li><a href="#testimoni" class="mobile-nav-link" data-close>Testimoni</a></li>
+                    <li><a href="#kontak" class="mobile-nav-link" data-close>Hubungi Kami</a></li>
+                    <li class="mt-4"><a href="#daftar" class="btn btn-secondary w-full text-center" data-close>Daftar Sekarang</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>

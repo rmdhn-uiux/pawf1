@@ -1,0 +1,57 @@
+{% extends "admin/login.html" %}
+{% load static %}
+
+{% block extrastyle %}{{ block.super }}{% endblock %}
+
+{% block content_title %}{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <div class="login-card">
+        <div class="login-logo">
+            <img src="{% static 'pesantren/images/logo.jpg' %}" alt="Logo Pondok Pesantren Al Mustaqim">
+            <h1>Pondok Pesantren</h1>
+            <span class="login-subtitle">Al Mustaqim</span>
+            <p class="login-desc">Portal Admin</p>
+        </div>
+
+        {% if form.errors and not form.non_field_errors %}
+        <p class="errornote">
+            {% if form.errors.items|length == 1 %}
+                Silakan perbaiki error di bawah.
+            {% else %}
+                Silakan perbaiki error di bawah.
+            {% endif %}
+        </p>
+        {% endif %}
+
+        {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+        <p class="errornote">{{ error }}</p>
+        {% endfor %}
+        {% endif %}
+
+        <form action="{{ app_path }}" method="post" id="login-form">
+            {% csrf_token %}
+            <div class="form-row">
+                {{ form.username.errors }}
+                <label for="id_username" class="required">Username</label>
+                {{ form.username }}
+            </div>
+            <div class="form-row">
+                {{ form.password.errors }}
+                <label for="id_password" class="required">Password</label>
+                {{ form.password }}
+                <input type="hidden" name="next" value="{{ next }}">
+            </div>
+            <div class="submit-row">
+                <input type="submit" value="Masuk">
+            </div>
+        </form>
+
+        <div class="login-footer">
+            <a href="/">&larr; Kembali ke Beranda</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
