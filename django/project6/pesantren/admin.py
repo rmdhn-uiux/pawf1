@@ -21,16 +21,21 @@ class TestimoniAdmin(admin.ModelAdmin):
 
 @admin.register(PesanKontak)
 class PesanKontakAdmin(admin.ModelAdmin):
-    list_display = ('nama', 'email', 'subjek', 'created_at')
-    search_fields = ('nama', 'email', 'subjek', 'pesan')
-    list_filter = ('created_at',)
-    readonly_fields = ('nama', 'email', 'telepon', 'subjek', 'pesan', 'created_at')
+    list_display = ('nama', 'telepon', 'subjek', 'source', 'created_at')
+    search_fields = ('nama', 'telepon', 'subjek', 'pesan', 'wa_id')
+    list_filter = ('source', 'created_at')
+    readonly_fields = ('nama', 'email', 'telepon', 'subjek', 'pesan', 'wa_id', 'source', 'created_at')
+    list_editable = ()
 
 @admin.register(PendaftaranSantri)
 class PendaftaranSantriAdmin(admin.ModelAdmin):
-    list_display = ('nama_lengkap', 'program_pilihan', 'nomor_hp', 'status', 'created_at')
+    list_display = ('nama_lengkap', 'tampilkan_jenjang', 'nomor_hp', 'status', 'created_at')
     list_filter = ('status', 'program_pilihan', 'created_at')
     search_fields = ('nama_lengkap', 'nama_orang_tua', 'nomor_hp', 'alamat')
     list_editable = ('status',)
     readonly_fields = ('created_at',)
+
+    @admin.display(description='Jenjang')
+    def tampilkan_jenjang(self, obj):
+        return obj.get_program_pilihan_display()
 

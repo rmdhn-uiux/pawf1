@@ -91,7 +91,7 @@ class PesantrenViewTests(TestCase):
             'nama_orang_tua': 'Abu Zayd',
             'nomor_hp': '08129876543',
             'alamat': 'Jl. Mawar No. 12',
-            'program_pilihan': self.program.id
+            'program_pilihan': 'MTS'
         }
         response = self.client.post(reverse('daftar_santri'), data=post_data)
         self.assertRedirects(response, reverse('landing_page') + '#daftar')
@@ -99,7 +99,7 @@ class PesantrenViewTests(TestCase):
         
         santri = PendaftaranSantri.objects.first()
         self.assertEqual(santri.nama_lengkap, 'Zayd')
-        self.assertEqual(santri.program_pilihan, self.program)
+        self.assertEqual(santri.program_pilihan, 'MTS')
 
     def test_daftar_santri_invalid_post(self):
         post_data = {

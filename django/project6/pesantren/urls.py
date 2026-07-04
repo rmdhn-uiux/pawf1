@@ -5,4 +5,5 @@ urlpatterns = [
     path('', views.landing_page, name='landing_page'),
     path('kirim-pesan/', views.kirim_pesan, name='kirim_pesan'),
     path('daftar-santri/', views.daftar_santri, name='daftar_santri'),
+    path('api/wa-webhook/', views.wa_webhook, name='wa_webhook'),
 ]

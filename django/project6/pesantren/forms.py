@@ -1,5 +1,5 @@
 from django import forms
-from .models import PesanKontak, PendaftaranSantri, ProgramUnggulan
+from .models import PesanKontak, PendaftaranSantri
 
 class PesanKontakForm(forms.ModelForm):
     class Meta:
@@ -34,10 +34,15 @@ class PesanKontakForm(forms.ModelForm):
             }),
         }
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['nama'].required = False
+        self.fields['email'].required = False
+        self.fields['subjek'].required = False
+
 class PendaftaranSantriForm(forms.ModelForm):
-    program_pilihan = forms.ModelChoiceField(
-        queryset=ProgramUnggulan.objects.all(),
-        empty_label="Pilih Program Pendidikan",
+    program_pilihan = forms.ChoiceField(
+        choices=[],
         widget=forms.Select(attrs={
             'class': 'form-select',
             'id': 'reg_program_pilihan'
@@ -51,6 +56,10 @@ class PendaftaranSantriForm(forms.ModelForm):
             'jenis_kelamin', 'nama_orang_tua', 'nomor_hp', 
             'alamat', 'program_pilihan'
         ]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['program_pilihan'].choices = [('', 'Pilih Jenjang Pendidikan')] + PendaftaranSantri.JENJANG_CHOICES
         widgets = {
             'nama_lengkap': forms.TextInput(attrs={
                 'class': 'form-control',

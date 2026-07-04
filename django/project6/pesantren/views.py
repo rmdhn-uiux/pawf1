@@ -1,7 +1,11 @@
+import json
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib import messages
-from .models import ProgramUnggulan, Fasilitas, Testimoni
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
+from .models import ProgramUnggulan, Fasilitas, Testimoni, PesanKontak
 from .forms import PesanKontakForm, PendaftaranSantriForm
 
 def landing_page(request):
@@ -48,6 +52,30 @@ def kirim_pesan(request):
                 'active_tab': 'contact'
             })
     return redirect('landing_page')
+
+@csrf_exempt
+@require_POST
+def wa_webhook(request):
+    try:
+        data = json.loads(request.body)
+        wa_id = data.get('wa_id', '')
+        nomor = data.get('nomor', '')
+        pesan = data.get('pesan', '')
+
+        if not nomor or not pesan:
+            return JsonResponse({'status': 'error', 'message': 'nomor dan pesan required'}, status=400)
+
+        PesanKontak.objects.create(
+            telepon=nomor,
+            pesan=pesan,
+            wa_id=wa_id,
+            source='wa'
+        )
+
+        return JsonResponse({'status': 'ok'})
+    except Exception as e:
+        return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
+
 
 def daftar_santri(request):
     if request.method == 'POST':
